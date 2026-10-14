@@ -1,0 +1,10 @@
+Architecture,Dataset,Total_Params,Trainable_Params,Model_Size_MB,Latency_Mean_ms,Latency_Std_ms,Throughput_samples_per_sec,RealTime_Viable (<100ms)
+EEGNET,Raw,45570,44994,0.59,14.52,0.56,68.9,Yes
+EEGNET,Filtered_8_30Hz,19778,19458,0.3,12.16,0.68,82.2,Yes
+EEGNET,Filtered_8_13Hz,19778,19458,0.3,12.14,0.73,82.4,Yes
+CVT,Raw,461570,461570,5.59,35.46,3.09,28.2,Yes
+CVT,Filtered_8_30Hz,461570,461570,5.59,38.72,1.98,25.8,Yes
+CVT,Filtered_8_13Hz,561154,561154,6.79,39.88,5.04,25.1,Yes
+VIT-PE,Raw,1784578,1783554,20.59,15.77,0.81,63.4,Yes
+VIT-PE,Filtered_8_30Hz,1584130,1581570,18.28,19.26,1.1,51.9,Yes
+VIT-PE,Filtered_8_13Hz,730434,729154,8.77,42.09,2.3,23.8,Yes

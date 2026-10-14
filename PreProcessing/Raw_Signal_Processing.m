@@ -1,17 +1,19 @@
-% Add the path to EEGLAB to MATLAB path
-addpath('C:\Users\ASUS\Documents\MATLAB\eeglab2024.2');
-
-% Initialize EEGLAB
+% --- 1. EEGLAB Initialization ---
+if ~exist('eeglab', 'file')
+    addpath(genpath('./eeglab'));
+end
 eeglab;
 
-% Define input and output folder paths
-input_folder = 'D:\Master\5_Semester\Master_Thesis\Dissertation_Dataset\BCI_Database\Raw_Signal\1\Test\A4';
-output_folder = 'D:\Master\5_Semester\Master_Thesis\Dissertation_Dataset\BCI_Database\Raw_Signal\2\Test\A4\Left Hand';
+% --- 2. Clean Relative Folder Paths ---
+input_folder  = './data/raw_gdf'; 
+output_folder = './data/processed_raw';
 
-% Check if output folder exists, and if not, create it
-if ~exist(output_folder, 'dir')
-    mkdir(output_folder);
-end
+% Output subdirectories for both classes
+out_left  = fullfile(output_folder, 'Left_Hand');
+out_right = fullfile(output_folder, 'Right_Hand');
+
+if ~exist(out_left, 'dir'),  mkdir(out_left);  end
+if ~exist(out_right, 'dir'), mkdir(out_right); end
 
 % Get the list of .gdf files in the input folder
 file_list = dir(fullfile(input_folder, '*.gdf'));
@@ -37,24 +39,33 @@ for file_idx = 1:length(file_list)
     filter_order = 3380; % Example of a valid even positive integer for filter order
     EEG = pop_eegfiltnew(EEG, 0.5, [], filter_order, 0, [], 0);
     
-    % Extract epochs based on the event 'class1, Left hand - cue onset (BCI experiment)'
-    event_type = 'class1, Left hand	- cue onset (BCI experiment)'; % Updated event type
-    event_idx = find(strcmp({EEG.event.type}, event_type));
-    
-    if isempty(event_idx)
-        disp(['No events found for type: ' event_type]);
-        continue; % Skip this file if no events found
-    end
-    
-    % Extract epochs
-    EEG = pop_epoch(EEG, {event_type}, [0 5], 'newname', [EEG.setname ' epochs'], 'epochinfo', 'yes');
+    % Define both classes with their exact event triggers (including the tab character)
+    classes = {
+        sprintf('class1, Left hand\t- cue onset (BCI experiment)'), out_left,  'Left';
+        sprintf('class2, Right hand\t- cue onset (BCI experiment)'), out_right, 'Right'
+    };
 
-    % Full path of the output file
-    [~, name, ~] = fileparts(file_list(file_idx).name);
-    output_file_path = fullfile(output_folder, [name '_processed.gdf']);
-    
-    % Save the processed EEG signal to a new .gdf file
-    pop_writeeeg(EEG, output_file_path, 'TYPE', 'GDF');
+    [~, base_name, ~] = fileparts(file_list(file_idx).name);
+
+    for c = 1:size(classes, 1)
+        event_type = classes{c, 1};
+        target_dir = classes{c, 2};
+        label_name = classes{c, 3};
+
+        event_idx = find(strcmp({EEG.event.type}, event_type));
+        if isempty(event_idx)
+            fprintf('No %s events found in %s\n', label_name, base_name);
+            continue;
+        end
+
+        % Extract epochs for this specific class
+        EEG_epoch = pop_epoch(EEG, {event_type}, [0 5], 'newname', [base_name '_' label_name], 'epochinfo', 'yes');
+
+        % Save class-specific GDF file
+        output_file_path = fullfile(target_dir, [base_name '_' label_name '_processed.gdf']);
+        pop_writeeeg(EEG_epoch, output_file_path, 'TYPE', 'GDF');
+    end
+
 end
 
 disp('Processing and saving completed.')
