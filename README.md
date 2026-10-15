@@ -213,7 +213,7 @@ If you use this code, data structures, or benchmark results in your research, pl
 ```bibtex
 @article{abdollahi2026comparative,
   title={A Comparative Study on Convolutional and Transformer Architectures for Subject-Independent Motor Imagery Decoding},
-  author={Abdollahi, Armin and Kasaeian, Sarina and Keyhanmehr, [Co-author Name]},
+  author={Abdollahi, Armin and Maliheh, Sabeti and Boostani, Reza},
   journal={Journal of Neuroscience Methods},
   volume={Under Revision},
   pages={JNEUMETH-D-26-00712},
