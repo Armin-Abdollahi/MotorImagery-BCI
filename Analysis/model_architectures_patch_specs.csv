@@ -1,0 +1,4 @@
+Architecture,Temporal Filter,Spatial Filter,Separable Filter,Patch / Token Representation,Sequence / Token Count,Attention Heads / Depth,Spatial / Conv Projection
+EEGNet,1×64 Conv2D (F1=8),"27×1 DepthwiseConv (D=2, F2=16)",1×16 SeparableConv2D,Continuous Temporal Convolutions (No Patching),N/A,N/A (Fully CNN),
+CvT (Convolutional ViT),Hierarchical Convolutional Token Embeddings,,"Kernel Size (1, 32 / 1, 16)",Convolutional Overlapping Patches,Multi-stage downsampled (Stage 1-3),"Stage 1: 1H, Stage 2: 3H, Stage 3: 6H",Depthwise Sep Conv Projection in Self-Attention
+ViT-PE (Pure ViT),Linear Patch Projection Layer,Channel-wide Patch Flattening,None (Dense Linear Projections),Temporal Reshaped Patches (P = 128 / 320),20 or 40 Tokens (2560 timepoints / P),"4 or 8 Attention Heads, 2 to 6 Transformer Blocks",

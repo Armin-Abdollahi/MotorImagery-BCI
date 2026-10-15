@@ -1,10 +1,10 @@
-Architecture,Dataset,Total_Params,Trainable_Params,Model_Size_MB,Latency_Mean_ms,Latency_Std_ms,Throughput_samples_per_sec,RealTime_Viable (<100ms)
-EEGNET,Raw,45570,44994,0.59,14.52,0.56,68.9,Yes
-EEGNET,Filtered_8_30Hz,19778,19458,0.3,12.16,0.68,82.2,Yes
-EEGNET,Filtered_8_13Hz,19778,19458,0.3,12.14,0.73,82.4,Yes
-CVT,Raw,461570,461570,5.59,35.46,3.09,28.2,Yes
-CVT,Filtered_8_30Hz,461570,461570,5.59,38.72,1.98,25.8,Yes
-CVT,Filtered_8_13Hz,561154,561154,6.79,39.88,5.04,25.1,Yes
-VIT-PE,Raw,1784578,1783554,20.59,15.77,0.81,63.4,Yes
-VIT-PE,Filtered_8_30Hz,1584130,1581570,18.28,19.26,1.1,51.9,Yes
-VIT-PE,Filtered_8_13Hz,730434,729154,8.77,42.09,2.3,23.8,Yes
+Architecture,Dataset,Total_Params,Trainable_Params,Non_Trainable_Params,Disk_Size_MB,Latency_Mean_ms,Latency_SD_ms,Latency_Median_ms,Latency_IQR_ms,Latency_P95_ms,Throughput_s,RealTime_Viable_P95 (<100ms)
+EEGNET,Raw,45570,44994,576,0.59,15.45,2.02,14.8,2.44,19.57,64.7,Yes
+EEGNET,Filtered_8_30Hz,19778,19458,320,0.3,14.33,0.5,14.27,0.54,15.13,69.8,Yes
+EEGNET,Filtered_8_13Hz,19778,19458,320,0.3,12.46,1.0,12.15,0.74,14.46,80.3,Yes
+CVT,Raw,461570,461570,0,5.59,27.21,1.62,26.76,1.57,29.92,36.7,Yes
+CVT,Filtered_8_30Hz,461570,461570,0,5.59,25.82,1.56,25.37,1.32,28.95,38.7,Yes
+CVT,Filtered_8_13Hz,561154,561154,0,6.79,30.05,1.37,29.63,1.81,32.95,33.3,Yes
+VIT-PE,Raw,1784578,1783554,1024,20.59,11.28,1.29,11.6,2.22,13.21,88.6,Yes
+VIT-PE,Filtered_8_30Hz,1584130,1581570,2560,18.28,12.77,1.76,12.94,3.18,15.11,78.3,Yes
+VIT-PE,Filtered_8_13Hz,730434,729154,1280,8.77,23.06,0.85,22.89,0.85,24.74,43.4,Yes
