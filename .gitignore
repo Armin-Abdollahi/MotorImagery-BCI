@@ -1,0 +1,17 @@
+# Data folders (generated dynamically via scripts)
+data_bci2a_raw/
+data_bci2a_processed_1000/
+*.npy
+*.mat
+*.gdf
+
+# Python / Jupyter caches
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# OS generated
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

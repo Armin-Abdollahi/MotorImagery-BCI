@@ -225,3 +225,13 @@ If you use this code, data structures, or benchmark results in your research, pl
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## BCI Competition IV-2a (Cross-Subject LOSO Pipeline)
+
+To reproduce the cross-subject Leave-One-Subject-Out (LOSO) evaluation on the BCI Competition IV-2a benchmark:
+
+1. **Download Data:** Run `PreProcessing/download_bci2a.ipynb` to download and verify raw GDF sessions via MOABB.
+2. **Preprocessing:** Run `PreProcessing/preprocess_bci2a.ipynb` to extract 22-channel, 1000-timepoint motor imagery trials.
+3. **Training & Evaluation:** Run `Models/bci2a_loso_train.ipynb` to execute 27 LOSO folds across EEGNet, CvT, and ViT-PE.
+4. **Statistical Analysis:** Run `Analysis/bci2a_statistical_analysis.ipynb` to generate Holm-Bonferroni corrected Wilcoxon statistics and publication boxplots.

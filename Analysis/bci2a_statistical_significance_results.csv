@@ -1,0 +1,4 @@
+Comparison,Superior Model,Mean Diff (%),Wilcoxon W,p_raw,p_holm,Effect Size (r),Significant (p_holm < 0.05)
+CvT vs EEGNet,EEGNet,-9.46,1.0,0.0078125,0.015625,0.887,True
+ViT-PE vs EEGNet,EEGNet,-12.9,0.0,0.00390625,0.01171875,0.962,True
+CvT vs ViT-PE,No Significant Difference,3.44,13.0,0.30078125,0.30078125,0.345,False
